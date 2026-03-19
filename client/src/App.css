@@ -1,0 +1,249 @@
+:root {
+  --bg: #f4f6f8;
+  --text: #1f2937;
+  --muted: #606f7b;
+  --accent: #2f9e83;
+  --accent-2: #1e6aa8;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  --radius: 16px;
+  --max: 1240px;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem 1.5rem 2.5rem;
+}
+
+.page {
+  width: min(100%, var(--max));
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7rem;
+}
+
+.nav img {
+  height: 60px;
+  max-width: 260px;
+  object-fit: contain;
+}
+
+.nav nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav a {
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: clamp(5rem, 5vw, 4rem);
+  margin: 0;
+  line-height: 1.05;
+}
+
+.hero-text p {
+  margin: 1.2rem 0 1.8rem;
+  max-width: 520px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.14);
+}
+
+.hero-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  background: transparent;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 10000px;
+  object-fit: cover;
+  object-position: 100% 100%;
+  transition: transform 0.3s ease;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  padding: 1rem 2rem;
+  border-radius: 40px;           /* pill shape */
+  box-shadow: var(--shadow);
+  font-weight: 700;
+  color: var(--text);
+  border: 1px solid rgba(31, 41, 55, 0.1);
+  white-space: nowrap;            /* keeps text in one line */
+  opacity: 0;
+  pointer-events: none;           /* prevents interfering with hover */
+  transition: opacity 0.3s ease;
+}
+
+.hero-image:hover .hero-overlay {
+  opacity: 1;
+}
+
+.hero-overlay.badges {
+  display: flex;
+  gap: 0.8rem;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+.hero-image:hover img {
+  transform: scale(1.02);
+}
+
+.badges {
+  position: absolute;
+  top: 12%;
+  right: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.badge--1 {
+  position: absolute;
+  width: 200px;
+  text-align: center;
+  top: 90px;
+  right: 370px;
+  border: 0.5px solid rgb(68, 65, 65);
+  padding: 20px;
+  border-radius: 5%;
+  background: white;
+  box-shadow: 25px 25px 30px gray;
+}
+
+.badge--2 {
+  position: absolute;
+  width: 200px;
+  text-align: center;
+  top: -70px;
+  right: 250px;
+  border: 0.5px solid rgb(68, 65, 65);
+  padding: 20px;
+  border-radius: 5%;
+  background: white;
+  box-shadow: 15px 15px 20px gray;
+}
+
+.badge--3 {
+  position: absolute;
+  width: 200px;
+  text-align: center;
+  top: 20px;
+  right: -200px;
+  border: 0.5px solid rgb(68, 65, 65);
+  padding: 20px;
+  border-radius: 5%;
+  background: white;
+  box-shadow: 15px 15px 20px gray;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.13);
+  font-weight: 700;
+  color: var(--text);
+  border: 1px solid rgba(31, 41, 55, 0.08);
+}
+
+.badge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 3.5rem;
+  }
+
+  .nav a {
+    margin-left: 1.75rem;
+  }
+
+  .badges {
+    top: 16%;
+    right: 12%;
+  }
+}
+
+.vision {
+  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  margin: 0;
+}
